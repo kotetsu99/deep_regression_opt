@@ -14,7 +14,7 @@ def main():
 
     # 学習済ファイルの確認
     if len(sys.argv)==1:
-        print('使用法: python cnn_visualization.py 学習済ファイル名.h5')
+        print('使用法: python dnn_visualization.py 学習済ファイル名.h5')
         sys.exit()
     savefile = sys.argv[1]
 

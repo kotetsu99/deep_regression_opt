@@ -28,9 +28,6 @@ logger = logging.getLogger()
 # 損失関数最小値の初期値定義
 min_vmae = np.inf
 
-# 最適パラメータ保存ファイルパス
-#best_params_file = 'log/best_params.txt'
-
 
 def main():
     # 環境設定(ディスプレイの出力先をlocalhostにする)
@@ -91,15 +88,15 @@ def objective_loop():
         # グローバル変数の損失関数最小値呼び出し
         global min_vmae
 
-        # 追加する層を1-3から選ぶ
+        # 中間層数の探索範囲設定
         n_layer = trial.suggest_int(*n_layer_range)
-        # ユニット数（10,20,30,40のうち、いずれかを選ぶ）
+        # ユニット数の探索範囲設定
         mid_units = int(trial.suggest_discrete_uniform(*mid_units_range))
-        # ドロップアウト率（0～0.5の範囲の値の中で、いずれかを選ぶ）
+        # ドロップアウト率の探索範囲設定
         dropout_rate = trial.suggest_uniform(*dropout_rate_range)
-        # 活性化関数
+        # 活性化関数の探索候補設定
         activation = trial.suggest_categorical(*activation_list)
-        # 最適化アルゴリズム
+        # 最適化アルゴリズムの探索候補設定
         optimizer = trial.suggest_categorical(*optimizer_list)
 
         # 各パラメータを画面出力

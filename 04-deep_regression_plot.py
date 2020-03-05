@@ -10,9 +10,10 @@ import matplotlib.pyplot as plt
 import sys
 import os
 
-# データセットファイルパス
-csvfile = 'dataset/train.csv'
-
+# 設定ファイル読み込み
+conf_file = 'dnn.conf'
+config = configparser.ConfigParser()
+config.read(conf_file, 'UTF-8')
 
 def main():
 
@@ -25,6 +26,8 @@ def main():
         sys.exit()
 
     # 学習データセットファイル取得
+    c_file_path = config['File Path']
+    csvfile = c_file_path['dataset_file']
     x, y = load_csv(csvfile)
 
     # 学習モデルファイルパス取得
