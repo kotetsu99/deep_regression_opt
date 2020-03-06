@@ -43,8 +43,8 @@ def main():
 
     # 最適化探索（optunaのstudyオブジェクト定義）
     study = optuna.create_study(sampler=optuna.samplers.TPESampler())
-    # optimizeに最適化すべき目的関数（objective）を渡す。これをn_trial回試行する。目的関数の値が最小のものを探索する。
-    study.optimize(objective_loop(), n_trials)
+    # optimizeに最適化すべき目的関数（objective）を渡す。これをn_trials回試行する。目的関数の値が最小のものを探索する。
+    study.optimize(outer_objective(), n_trials)
     
     # 最適だった試行回を表示
     logger.info('best_trial.number: ' + 'trial#' + str(study.best_trial.number))
@@ -62,8 +62,7 @@ def main():
 
 
 # 目的関数。trial（過去に探索した内容の履歴を保存した）オブジェクトを引数にする
-
-def objective_loop():
+def outer_objective():
 
     # 学習モデルファイル保存先パス取得
     savefile = sys.argv[1]
@@ -82,7 +81,7 @@ def objective_loop():
     # val_loss(観測上最小値) - min_delta  < val_loss
     es_cb = keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=val_min_delta, patience=nb_patience, verbose=1, mode='min')
 
-    #print('obj_loop_start')
+    print('obj_loop_start')
 
     def objective(trial):
         # グローバル変数の損失関数最小値呼び出し
@@ -196,7 +195,7 @@ def create_model(n_features, n_outputs, n_layer, activation, mid_units, dropout_
     # ニューラルネットワーク定義
     model = Sequential()
 
-    # 中間層枚数、ニューロン数の調整
+    # 中間層数、各ニューロン数、ドロップアウト率の定義
     for i in range(n_layer):
         model.add(Dense(mid_units, activation=activation, input_shape=(n_features,)))
         model.add(Dropout(dropout_rate))
