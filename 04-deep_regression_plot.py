@@ -9,6 +9,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import sys
 import os
+import configparser
 
 # 設定ファイル読み込み
 conf_file = 'dnn.conf'

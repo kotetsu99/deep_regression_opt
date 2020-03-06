@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import sys
 import os
+import configparser
 
 # 設定ファイル読み込み
 conf_file = 'dnn.conf'
