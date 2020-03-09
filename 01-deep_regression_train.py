@@ -99,7 +99,7 @@ def outer_objective():
         optimizer = trial.suggest_categorical(*optimizer_list)
 
         # 各パラメータを画面出力
-        logger.debug("trial#" + str(trial.number) + ': ' +
+        logger.info("trial#" + str(trial.number) + ': ' +
         "n_layer= " + str(n_layer) + ', ' +
         "mid_units= " + str(mid_units) + ', ' +
         "dropout_rate= " + str(dropout_rate) + ', ' +
