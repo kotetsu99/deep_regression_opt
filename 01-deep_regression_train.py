@@ -133,8 +133,11 @@ def outer_objective():
 def data_set(dataset_file):
     # csvをロードし、変数に格納
     df = pd.read_csv(dataset_file)
-    dfv = df.values
+    dfv = df.values.astype(np.float64)
     n_dfv = dfv.shape[1]
+
+    # 学習データをシャッフル
+    np.random.shuffle(dfv)
 
     # 特徴量のセットを変数Xに、ターゲットを変数yに格納
     X = dfv[:, np.array(range(0, (n_dfv-1)))]
