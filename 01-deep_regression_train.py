@@ -124,7 +124,6 @@ def outer_objective():
             # 損失関数の時系列変化をグラフ表示
             plot_loss(history)
 
-        # 最小値探索(各エポックで得られた目的関数のうち最小値を返す)
         return vmae
     
     return objective
