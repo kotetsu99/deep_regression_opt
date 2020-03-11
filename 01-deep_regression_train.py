@@ -82,7 +82,7 @@ def outer_objective():
 
     print('obj_loop_start')
 
-    # 目的関数。trial（過去に探索した内容の履歴を保存した）オブジェクトを引数にする
+    # 目的関数
     def objective(trial):
         # グローバル変数の目的関数最小値呼び出し
         global min_vmae
