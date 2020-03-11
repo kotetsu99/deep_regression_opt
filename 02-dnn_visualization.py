@@ -4,8 +4,8 @@
 import os, sys
 import keras
 from keras.preprocessing import image
-#from keras.utils.vis_utils import plot_model
 from keras.utils import plot_model
+
 
 def main():
 
@@ -30,6 +30,7 @@ def main():
 
     # モデルの概要図をファイル出力
     plot_model(model, to_file='model.png', show_shapes=True)
+
 
 if __name__ == '__main__':
     main()

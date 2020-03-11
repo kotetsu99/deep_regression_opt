@@ -48,8 +48,6 @@ def main():
     
     # 最適だった試行回を表示
     logger.info('best_trial.number: ' + 'trial#' + str(study.best_trial.number))
-    # 最適なハイパーパラメータを表示
-    # logger.info('best_params: ' + study.best_params)
     # 目的関数の最適（最小）値を表示
     logger.info('best_vmae: ' + str(study.best_value))
 
@@ -61,8 +59,8 @@ def main():
     logger.info('------------')
 
 
+# objective関数を内包する高階関数。objective関数呼び出し前に、種々の事前設定等を行う。
 def outer_objective():
-
     # 学習モデルファイル保存先パス取得
     savefile = sys.argv[1]
 
@@ -116,9 +114,6 @@ def outer_objective():
         # これまでの最小目的関数より小さい場合更新して、最適モデルとして保存
         if vmae < min_vmae:
             min_vmae = vmae
-            #logger.info('----------')
-            #logger.info('min_vmae=' + str(min_vmae) + '@' + 'trial#'  + str(trial.number))
-            #logger.info('----------')
             model.save(savefile)
 
             # 損失関数の時系列変化をグラフ表示
@@ -153,7 +148,6 @@ def data_set(dataset_file):
     return X, y, n_features, n_outputs
 
 
-# ハイパーパラメータ設定
 def set_hyperparameter():
     # トレーニングパラメータセクション
     c_trpa = config['Train Parameter']

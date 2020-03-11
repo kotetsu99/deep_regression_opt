@@ -16,6 +16,7 @@ conf_file = 'dnn.conf'
 config = configparser.ConfigParser()
 config.read(conf_file, 'UTF-8')
 
+
 def main():
 
     # 環境設定(ディスプレイの出力先をlocalhostにする)
