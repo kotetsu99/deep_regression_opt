@@ -25,7 +25,7 @@ config.read(conf_file, 'UTF-8')
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger()
 
-# 損失関数最小値の初期値定義
+# 目的関数最小値の初期値定義
 min_vmae = np.inf
 
 
@@ -84,7 +84,7 @@ def outer_objective():
     print('obj_loop_start')
 
     def objective(trial):
-        # グローバル変数の損失関数最小値呼び出し
+        # グローバル変数の目的関数最小値呼び出し
         global min_vmae
 
         # 中間層数の探索範囲設定
@@ -110,10 +110,10 @@ def outer_objective():
         model = create_model(n_features, n_outputs, n_layer, activation, mid_units, dropout_rate, optimizer)
         history = model.fit(X, y, verbose=0, epochs=nb_epochs, validation_split=0.1, batch_size=n_bs, callbacks=[es_cb])
 
-        # 最小値探索(各エポックで得られた検証損失関数のうち最小値を返す)
+        # 最小値探索(各エポックで得られた目的関数のうち最小値を返す)
         vmae = np.amin(history.history['val_mean_absolute_error'])
 
-        # これまでの最小損失関数より小さい場合更新して、最適モデルとして保存
+        # これまでの最小目的関数より小さい場合更新して、最適モデルとして保存
         if vmae < min_vmae:
             min_vmae = vmae
             #logger.info('----------')
@@ -124,7 +124,7 @@ def outer_objective():
             # 損失関数の時系列変化をグラフ表示
             plot_loss(history)
 
-        # 最小値探索(各エポックで得られた検証損失関数のうち最小値を返す)
+        # 最小値探索(各エポックで得られた目的関数のうち最小値を返す)
         return vmae
     
     return objective
