@@ -10,7 +10,7 @@ Optunaによるハイパーパラメータ最適化機能を実装していま�
 
 ・使用方法： https://nine-num-98.blogspot.com/2020/03/ai-hyper-opt-01.html
 
-・解説： 作成中……
+・解説： https://nine-num-98.blogspot.com/2020/03/ai-hyper-opt-02.html
 
 
 # 参考
