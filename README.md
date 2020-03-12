@@ -8,7 +8,7 @@ Optunaによるハイパーパラメータ最適化機能を実装していま�
 
 こちらのブログ記事をご確認ください。
 
-・使用方法： https://nine-num-98.blogspot.com/2020/03/hyperparameter-tuning-01.html
+・使用方法： https://nine-num-98.blogspot.com/2020/03/ai-hyper-opt-01.html
 
 ・解説： 作成中……
 
