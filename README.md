@@ -19,3 +19,4 @@ Optunaによるハイパーパラメータ最適化機能を実装していま�
 
 ・Optuna実装前のバージョン： https://github.com/kotetsu99/deep_regression
 
+・logging.conf内容の参考サイト： https://www.sejuku.net/blog/23149
